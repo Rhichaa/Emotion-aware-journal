@@ -13,7 +13,7 @@ This project is a mini emotional journal system that logs a user's emotions, int
 - Export reports to `.db` format for verification
 
 ## Output Sample
-![Emotion Trend Graph](images/emotion_trend.png) *(if you add images)*
+![Emotion Trend Graph](images/emotion_trend.png) 
 
 ## Author
 Rhichaa Thiyagarajan | [LinkedIn](https://www.linkedin.com/in/rhichaa-thiyagarajan-481a89253) | [GitHub](https://github.com/Rhichaa)
