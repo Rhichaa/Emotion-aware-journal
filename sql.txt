@@ -1,0 +1,61 @@
+-- Drop tables if they already exist to avoid conflicts
+DROP TABLE IF EXISTS Triggers;
+DROP TABLE IF EXISTS JournalEntry;
+DROP TABLE IF EXISTS Emotion;
+DROP TABLE IF EXISTS Users;
+
+-- Create Users table
+CREATE TABLE Users (
+    UserID INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Age INTEGER,
+    Occupation TEXT
+);
+
+-- Create Emotion table
+CREATE TABLE Emotion (
+    EmotionID INTEGER PRIMARY KEY,
+    EmotionName TEXT NOT NULL
+);
+
+-- Create JournalEntry table
+CREATE TABLE JournalEntry (
+    EntryID INTEGER PRIMARY KEY,
+    UserID INTEGER,
+    EmotionID INTEGER,
+    DateTime TEXT,
+    Text TEXT,
+    Intensity INTEGER,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (EmotionID) REFERENCES Emotion(EmotionID)
+);
+
+-- Create Triggers table (example purpose)
+CREATE TABLE Triggers (
+    TriggerID INTEGER PRIMARY KEY,
+    EntryID INTEGER,
+    TriggerText TEXT,
+    FOREIGN KEY (EntryID) REFERENCES JournalEntry(EntryID)
+);
+
+-- Insert sample user
+INSERT INTO Users (UserID, Name, Age, Occupation)
+VALUES (1, 'Rhichaa', 21, 'Student');
+
+-- Insert sample emotion
+INSERT INTO Emotion (EmotionID, EmotionName)
+VALUES (1, 'Happy');
+
+-- Insert sample journal entry
+INSERT INTO JournalEntry (EntryID, UserID, EmotionID, DateTime, Text, Intensity)
+VALUES (1, 1, 1, '2025-05-23 20:15', 'Felt good after finishing a project', 8);
+
+-- Insert sample trigger
+INSERT INTO Triggers (TriggerID, EntryID, TriggerText)
+VALUES (1, 1, 'Finishing project');
+
+-- Check if data is inserted correctly
+SELECT * FROM Users;
+SELECT * FROM Emotion;
+SELECT * FROM JournalEntry;
+SELECT * FROM Triggers;

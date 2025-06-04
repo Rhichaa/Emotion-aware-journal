@@ -1,0 +1,59 @@
+Table User {
+
+UserID int [pk]
+
+Name varchar
+
+Age int
+
+Occupation varchar
+
+}
+
+
+
+Table Emotion {
+
+EmotionID int [pk]
+
+EmotionName varchar
+
+}
+
+
+
+Table JournalEntry {
+
+EntryID int [pk]
+
+UserID int [ref: > User.UserID]
+
+EmotionID int [ref: > Emotion.EmotionID]
+
+DateTime datetime
+
+Text text
+
+IntensityLevel int
+
+SleepHours float
+
+Weather varchar
+
+Location varchar
+
+}
+
+
+
+Table Trigger {
+
+TriggerID int [pk]
+
+EntryID int [ref: > JournalEntry.EntryID]
+
+TriggerType varchar
+
+Notes text
+
+}
